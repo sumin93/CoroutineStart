@@ -1,8 +1,10 @@
 package ru.sumin.coroutinestart
 
+import android.os.AsyncTask
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -24,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadData() {
+        Log.d("MainActivity", "Load started: $this")
         binding.progress.isVisible = true
         binding.buttonLoad.isEnabled = false
         loadCity {
@@ -32,6 +35,7 @@ class MainActivity : AppCompatActivity() {
                 binding.tvTemperature.text = it.toString()
                 binding.progress.isVisible = false
                 binding.buttonLoad.isEnabled = true
+                Log.d("MainActivity", "Load finished: $this")
             }
         }
     }
